@@ -25,7 +25,7 @@
       <form class="form" id="form">
           <div class="form-control font ">
               <lable>Firstname</lable><br>
-              <input type="text" id="firstName" >
+              <input type="text" id="firstName" placeholder="First Name">
               <i class="fa fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
               <small>Error message</small>
@@ -33,7 +33,7 @@
       
             <div class="form-control font">
                  <lable>last Name</lable><br>
-                 <input type="text" id="lastName" > 
+                 <input type="text" id="lastName" placeholder="Last Name"> 
                  <i class="fa fa-check-circle"></i>
                   <i class="fa fa-exclamation-circle"></i>
                   <small>Error message</small>
@@ -48,55 +48,23 @@
             </div>
             <div class="form-control font">
                  <lable>Password</lable><br>
-                 <input type="password"  id="Password"><br>
-                 <!-- <input type="checkbox" onclick="myFunction()"> Show Password -->
+                 <input type="text" id="Password" placeholder="Password"> 
                  <i class="fa fa-check-circle"></i>
                  <i class="fa fa-exclamation-circle"></i>
                  <small>Error message</small>
                 </div>
             <div class="form-control font">
                     <lable>Password check</lable><br>
-                    <input type="password" id="Passwordcheck" > 
+                    <input type="text" id="Passwordcheck" placeholder="Password two"> 
                     <i class="fa fa-check-circle"></i>
                     <i class="fa fa-exclamation-circle"></i>
                     <small>Error message</small>
                </div>
-            <!-- <button>Submit</button> -->
-            <button id="addTodo" class="btn btn-info text-white">ADD</button>
-            <button id="updatBtn" class="btn btn-info text-white">Update</button>
-             
+            <button>Submit</button>
         </form>
-        <h6>LIsta</h6>
-         <div class="container"> 
-             <div class="py-1" id="todos">
-              <div class=" bg-white border rounded p-1 d-flex justify-content-between align-items-center mt-1">text <button class="btn-danger px-1" onclick="document.getElementById('id01').style.display='block'">X</button></div>
-             </div>
-             <!-- <div class=" new-email bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">text </div>
-            - <div id="Userregister-message"></div> -->
-          </div>
-        
-
-        <div id="id01" class="modal">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-          <form class="modal-content" action="/action_page.php">
-            <div class="container-model">
-              <h1>Delete User</h1>
-              <p>Are you sure you want to delete user?</p>
-            
-              <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="button"  class="deletebtn">Delete</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        
-     
-        
-      
     </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-  <script type="module" src="script.js"></script>
+  <script type="module" src="Users/script.js"></script>
 </body>
 </html>

@@ -1,9 +1,63 @@
+//import UserService from './UserService.js'
+//  import { validate, hasNumber } from './functions/functions.js'
+
+var Users = [
+    {
+      id: '1',
+      firstname: 'Iman',
+      lastname: 'salem',
+      email: 'emanelzayadi@gmail.com',
+      Password: '12345678', 
+      fullname: 'Iman Ezziyadi',
+    },
+]
+
 const form = document.getElementById('form');
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email= document.getElementById('email');
-const Password = document.getElementById('Password');
+const  Password = document.getElementById('Password');
 const Passwordcheck = document.getElementById('Passwordcheck');
+const output = document.querySelector('#todos');
+const outputemail = document.querySelector('.new-email');
+var updatBtn = document.querySelector('#updatBtn');
+const addBtn = document.querySelector('#addTodo');
+var deletebtn = document.querySelector('.deletebtn');
+var small = document.querySelector('small');
+var formcontrol = document.querySelector('.formcontrol');
+
+
+
+ var brajobb = "false";
+ const listUsers = () => {
+   output.innerHTML = '';
+  //  outputemail.innerHTM= ' ';
+   Users.forEach(user => {
+    output.innerHTML += `<div id="${user.id}" class="bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">${user.firstname} ${user.lastname} <br> ${user.firstname}.${user.lastname}@domain.com  <button class="btn-danger px-3" onclick="document.getElementById('id01').style.display='block'">X</button></div>` 
+    // outputemail.innerHTML += `<div id="${user.id}" class="bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">${user.firstname}.${user.lastname}@domain.com ></div>` 
+   })
+ }
+
+ listUsers();
+ addBtn.addEventListener('click', (e) => {
+     e.preventDefault();
+    //  form['firstName'].addEventListener('click', (e) => {
+    //   document.getElementById(form['firstName']).value= " " ;
+    // });
+    
+     brajobb = "false";
+    //  && chekname(firstName,lastName )
+       checkInputs()
+       if (brajobb === "true") {
+         //  chekname(firstName,lastName )
+         registerUser(firstName,lastName, email, Password );
+          listUsers()
+         } else {
+         console.log('can not register this User'); 
+       }  
+  });
+
+
 
 function checkInputs() {
     const firstNameValue = firstName.value.trim();
@@ -11,55 +65,360 @@ function checkInputs() {
     const emailValue = email.value.trim();
     const PasswordValue = Password.value.trim();
     const PasswordcheckValue = Passwordcheck.value.trim();
-
-     if(firstNameValue === '' || firstNameValue == null) {
-        setErrorFor(firstName,'firstName connot be blonk')
+    // const  fullNameValue = fullname(firstNameValue,lastNameValue);
+    
+    
+    if(firstNameValue === '' || firstNameValue.includes('-')) {
+        setErrorFor(firstName,'firstName connot be blank or has tecken');
+        brajobb = "false";
      } else {
         setSuccessFor(firstName);
-
      }
 
-      if(lastNameValue === '' || lastNameValue == null) {
-        setErrorFor(lastName,'lastName connot be blonk')
+      if(lastNameValue === '' || lastNameValue === null) {
+        setErrorFor(lastName,'lastName connot be blonk');
+        brajobb = "false";
        } else {
          setSuccessFor(lastName);
        }
-       if(emailValue === '') {
-           setErrorFor(email,'Email connot be blonk ')
-        } else {
-        //  if (!isEmail(emailValue)) {
-            // setErrorFor(email,'Email is not valid ') 
-        //  } else {
+      //  if (cheknamen (firstNameValue,lastNameValue) ) {
+      //   setSuccessFor(lastName);
+      //  } else {
+      //   setErrorFor(lastName,'this User was input');
+      //  }
+
+       if(emailValue === '' || emailValue.includes("å")  || emailValue.includes("ä") || emailValue.includes("ö")|| emailValue === null ) {
+      //  || emailFunction(emailValue))  {
+           setErrorFor(email,'Email connot be blonk or contin å,ä,ö ')
+           brajobb = "false";
+          } else { 
              setSuccessFor(email);
-         }
+          }
        
-       if(PasswordValue === '' || PasswordValue == null) {
-        setErrorFor(Password,'Password connot be blonk');
-       } else if (PasswordValue.length <= 7) {
-           setErrorFor(Password,'Password must be longer than 7');
+       if(PasswordValue === '' || PasswordValue === null) {
+         setErrorFor(Password,'Password connot be blonk');
+        } else if (PasswordValue.length <= 7  || PasswordValue.length >= 20 ) {
+             setErrorFor(Password,'Password must be longer than 7 and less then 20');
        } else {
             setSuccessFor(Password);
        }
-       if(PasswordcheckValue === '' || PasswordcheckValue == null) {
-        setErrorFor(Passwordcheck,'Password check connot be blonk');
-       } else if (PasswordValue !== PasswordcheckValue) {
+       if(PasswordcheckValue === '' || PasswordcheckValue === null) {
+          setErrorFor(Passwordcheck,'Password check connot be blonk');
+        } else if (PasswordValue !== PasswordcheckValue) {
            setErrorFor(Passwordcheck,'Password does not match');
-       } else {
-        setSuccessFor(Passwordcheck);
-       }      
-        
+        } else {
+         setSuccessFor(Passwordcheck);
+       } 
+      
 }
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    checkInputs();
-})
+
 function setErrorFor( input, message) {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
      small.innerText = message;
     formControl.className = 'form-control error';
+    brajobb = "false";
 }
 function setSuccessFor( input) {
     const formControl = input.parentElement;
     formControl.className = 'form-control success';
+    brajobb = "true";
+}; 
+ function cleanScren() {
+  // const formControl = input.parentElement;
+  // const small = formControl.querySelector('small');
+  small.innerText = " ";
+    small.classList.remove('small');
+    firstName.innerHTML = " ";
+   lastName.innerHTML  = " " ;
+    email.innerHTML = " " ;
+    Password.innerHTML = " " ;
+    Passwordcheck.innerHTML = "";
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("Password").value = "";
+    document.getElementById("Passwordcheck").value = "";
 }
+
+//  check: namen är inte registrerade före
+//  function  chekname(firstName,lastName) {
+  // const firstnamechek =`${firstName}`;
+  // const lastnamechek = `${lastName}`;
+  // var fullnamechek = `${firstName}` + `${lastName}`;
+
+  // `${fullName}`;
+   //  const lastname = lastName;
+
+  //  Users.forEach(user => {
+  //    if (user.fullName =  fullnamechek)  {
+  //       // user.fullName + `${fullname}`
+  //       // if  (lastname =`${lastName}`) {
+  //          console.log( fullnamechek +" this User was input");
+  //          return false 
+  //     } else {
+  //       console.log("ok User registered"); 
+  //       return true;
+        
+  //     }
+  //  })
+  // }
+
+ 
+  // console.log(fullName);
+ 
+
+//  registerar användare
+function registerUser() {
+  var user = {
+    id: Date.now().toString(),
+    firstname: firstName.value,
+    lastname: lastName.value,
+    email: email.value,
+    password: Password.value,
+    fullname: fullnamu(),
+  };
+  // Display data from the object:
+  console.log(user.fullname);
+
+  // check full name
+  let registeruser = '';
+    Users.forEach(person => {
+       if (person.fullname ===  user.fullname)  {
+          console.log(user.fullname +' ' +" this User was input");
+           registeruser = "false";
+           alert('User alredy exists');
+           cleanScren();
+        } else {
+          registeruser ="true";
+        }
+    });
+    if (registeruser ==="true") {
+       console.log("ok User registered");
+      //skapa amvändare 
+     Users.push(user);
+     console.log('User register' + ' ' + user.firstname +" "+ user.lastname);
+      console.log(Users);
+     cleanScren();
+    
+      }
+   
+  }
+  // gära varning
+  output.addEventListener('click', (e) => {
+    //  window.alert('Are you shur delet this user?');
+     Users = Users.filter(user=> user.id !== e.target.parentNode.id)
+    listUsers();
+
+  })
+//   output.addEventListener('Focus', (e) => {
+//     window.alert('display information for user');
+//     Users = Users.filter(user=> user.id === e.target.parentNode.id)
+//     // document.getElementById('firstName') = Users.firstname
+//     //  document.getElementById('lastName') = Users.lastname;
+//     // document.getElementById('email') = Users.email;
+//     // document.getElementById('Password') = Users.Password;
+//     // document.getElementById('Passwordcheck') = Users.fullname;
+//     console.log(Users);
+ 
+//  });
+  // deletebtn.addEventListener('click',(e) => {
+    // e.preventDefault();
+  //    onclick.deleteUser= function deleteUser() {
+  //    var user = {
+  //      id: Date.now().toString(),
+  //      firstname: firstName.value,
+  //      lastname: lastName.value,
+  //      email: email.value,
+  //      password: Password.value,
+  //      fullname: fullnamu(),
+  //     };
+  //    for( var i = 0; i < Users.length; i++) { 
+                                   
+  //      if ( Users.fullname[i] ===  user.fullname) { 
+  //         delete Users[i]; 
+  //         consolw.log('delete')
+  //         listUsers();
+  //      }
+  //     }
+  //  };
+  //   // Users.forEach(person => {
+  //   //   if (person.fullname ===  user.fullname)  {
+    //     delete 
+
+
+
+  
+  
+
+
+ 
+
+
+  // updat
+  function updateUsers() {
+    if(user.id === e.target.parentNode.id){
+      return this.firstName, this.lastName, this.email, this.Password
+    }  
+};
+
+
+   updatBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('yes');
+    window.alert('display information for user');
+    Users = Users.filter(user=> user.id === e.target.parentNode.id)
+     console.log(Users);
+ 
+ });
+    
+    
+    
+   
+   
+
+  //   var user = {
+  //     id: Date.now().toString(),
+  //     firstname: firstName.value,
+  //     lastname: lastName.value,
+  //     email: email.value,
+  //     password: Password.value,
+  //     fullname: fullnamu(),
+  //   };
+  //   // updateUsers();
+  //   var element = _.findWhere(Users, {firstname : firstName.value  });
+  //        element.firtsname = firstname ;
+  //        element.firtsname = firstname ;
+
+  //  console.log(arrayObj);
+  //   listUsers()
+  // const formControl = input.parentElement;
+  // const small = formControl.querySelector('small');
+  // const i = document.querySelector('.fa' );
+  //  small.innerText = "";
+  // formControl.className.innerHTML = "";
+
+    
+  // deletebtn.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   //  var x = console.log(Users.indexOf(firstName));
+  //    Users = Users.filter(user => user.id !== e.target.parentNode.id);
+  //     listUsers();
+  //     document.getElementById('id01').style.display='none';
+  //     console.log('delete');
+      
+     
+
+
+  //   });
+
+  //   listUsers();
+     // Users.forEach(person => {
+    //   if (person.fullname ===  user.fullname)  {
+    //  for( var i = 0; i < Users.length; i++){                       
+    //     if ( Users[i].id ===  user.id) { 
+    //        delete Users[i]; 
+    //       console.log('delete');
+    //       listUsers();
+    //    }
+    //  }
+  
+    // });
+    
+    //     delete 
+
+
+
+
+  
+    // göra Lista
+//     const listUsers = () => {
+//            output.innerHTML = ' ';
+//            outputemail.innerHTM= ' ';
+//          Users.forEach(user => {
+//            output.innerHTML += `<div id="${user.id}" class="bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">${user.firstName} ${user.lastName} <button class="btn btn-danger px-3">X</button></div>` 
+//            outputemail.innerHTML += `<div id="${user.id}" class="bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">${user.firstname}.${user.lastname}@domain.com <button class="btn btn-danger px-3">X</button></div>` 
+      
+//         });
+//       }
+
+ 
+
+    
+     // create user
+      // return true
+      
+//   
+   
+   
+
+     function fullnamu() {
+       const firstNameV = firstName.value;
+       const lastNameV = lastName.value;
+      {
+        return `${firstNameV}`+' '+ `${lastNameV}`;
+      }
+     }
+    
+      
+    //     let fullName = `${firstName} ${lastName}`
+    //     console.log(fullName)
+    // }
+    
+  //   let fullName = `${firstName} ${lastName}`
+  //   console.log(fullName)
+  //  }
+  //  function emailFunction(email) {
+  //   let n =  `${email}`
+  //   if( n.includes("å")  || n.includes("ä") || n.includes("ö") ) {
+  //       return false
+  //   } else {
+  //       return true;
+  //   }
+
+  // }
+
+
+
+//  function user ( firstName,lastName,email,Password, Passwordcheck){
+
+//      this.firstname = firstName
+//      this.lastname = lastName
+//      this.email = email
+//      this.password = Password
+//      this.passwordcheck = Passwordcheck
+//      return `${this.firstName} ${this.lastName}`
+//      }
+// var user = {
+
+//      firstname:  .valufirstNamee.trim(),
+//     lastname: lastName.value.trim(),
+//      Email: email.value.trim(),
+//      password: Password.value.trim(),
+//      passwordcheck: Passwordcheck.value.trim(),
+//  }
+//  console.log(user);
+//  UserService.signUp(user);
+//  class Person {
+//         constructor(firstname, lastname) {
+//             this.firstname = firstName
+//              this.lastName = lastName
+//         }
+
+//         get fullName() {
+//            return `${this.firstName} ${this.lastName}`
+//          }
+//      }
+
+//      const p1 = new Person(firstName.value, lastName.valu);
+//      console.log(p1.firstName);
+//      console.log(p1.lastName);
+//      console.log(p1.fullName);
+
+ 
+
+
+
+
+
+
