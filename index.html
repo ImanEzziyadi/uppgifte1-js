@@ -5,40 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/043e51ac62.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-  <!-- <button id="btnAlert">ALERT!</button> -->
-
-  <!-- <form id="loginForm">
-    <input type="text" id="firstName" placeholder="First Name">
-    <input type="text" id="lastName" placeholder="Last Name">
-    
-  </form> -->
   <div class="container">
       <div class="header">
           <h2>Create Account</h2>
       </div>
       <form class="form" id="form">
-          <div class="form-control font ">
+         <div class="row">
+           <div class="form-control font col-md-6 ">
               <lable>Firstname</lable><br>
               <input type="text" id="firstName" >
               <i class="fa fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
               <small>Error message</small>
-          </div>
+           </div>
       
-            <div class="form-control font">
+            <div class="form-control font col-md-6 mt-md-0">
                  <lable>last Name</lable><br>
                  <input type="text" id="lastName" > 
                  <i class="fa fa-check-circle"></i>
                   <i class="fa fa-exclamation-circle"></i>
                   <small>Error message</small>
             </div>
-           
+                     
             <div class="form-control font">
                     <lable>Email</lable><br>
                     <input type="text" id="email" placeholder="Enter you Email"> 
@@ -47,32 +39,19 @@
                     <small>Error message</small>
             </div>
             <div class="form-control font">
-                 <lable>Password</lable><br>
-                 <input type="password"  id="Password"><br>
-                 <!-- <input type="checkbox" onclick="myFunction()"> Show Password -->
-                 <i class="fa fa-check-circle"></i>
-                 <i class="fa fa-exclamation-circle"></i>
-                 <small>Error message</small>
-                </div>
-            <div class="form-control font">
-                    <lable>Password check</lable><br>
-                    <input type="password" id="Passwordcheck" > 
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-               </div>
-            <!-- <button>Submit</button> -->
-            <button id="addTodo" class="btn btn-info text-white">ADD</button>
-            <button id="updatBtn" class="btn btn-info text-white">Update</button>
+                <button id="addTodo" class="btn-reg btn-info text-white col-2">Register</button>
+              </div>
+        </div>
              
-        </form>
-        <h6>LIsta</h6>
-         <div class="container"> 
-             <div class="py-1" id="todos">
-              <div class=" bg-white border rounded p-1 d-flex justify-content-between align-items-center mt-1">text <button class="btn-danger px-1" onclick="document.getElementById('id01').style.display='block'">X</button></div>
-             </div>
-             <!-- <div class=" new-email bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">text </div>
-            - <div id="Userregister-message"></div> -->
+      </form>
+        <!-- <button id="updatBtn" class="btn btn-info text-white">Update</button> -->
+        <h6>Lista</h6>
+         <div class="users  d-flex"> 
+             <div class="py-1" id="todos" >
+               <div class=" bg-white border rounded p-1 d-flex justify-content-between align-items-center mt-1">text <button class="btn-danger px-1" onclick="document.getElementById('id01').style.display='block'">X</button>
+             
+                  <button id="btn">change</button> 
+              </div>
           </div>
         
 
@@ -89,7 +68,7 @@
               </div>
             </div>
           </form>
-        </div>
+        </form>
         
      
         

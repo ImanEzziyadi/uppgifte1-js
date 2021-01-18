@@ -12,8 +12,8 @@ body {
 }
 body {font-family: Arial, Helvetica, sans-serif;}
 /* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
+.btn-reg {
+  background-color: #9488c7;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -22,6 +22,16 @@ button {
   width: 100%;
   opacity: 0.9;
 }
+.user {
+  padding: 1.5rem;
+  box-shadow: 5px 5px 10px 0 #333;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 button:hover {
   opacity:1;
@@ -87,6 +97,7 @@ hr {
   font-size: 40px;
   font-weight: bold;
   color: #f1f1f1;
+
 }
 
 .close:hover,
@@ -137,7 +148,7 @@ hr {
     margin-bottom: 5px; 
 }
 .form-control input {
-    display: block;
+    /* display: block; */
    width: 100%;
    border: 2px solid #f0f0f0f0;
    font-size: 12px;
@@ -168,6 +179,9 @@ hr {
     visibility: visible;
 
 }
+.todos {
+  width: auto;
+}
 
 
 .form-control small {
@@ -181,7 +195,7 @@ hr {
     color: rgb(247, 4, 4);
 }
 
-.form button{
+/* .form button{
     background-color: rgb(146, 126, 165);
     border: 2px;
     border-radius: 4px;
@@ -190,8 +204,8 @@ hr {
     font-family: inherit;
     font-size:16px;
     padding: 10px;
-    width: 100%;
-}
+    width: 100%; */
+/* } */
 .font {
     font-size: 18;
     color: black;
