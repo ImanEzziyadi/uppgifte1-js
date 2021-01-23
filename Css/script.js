@@ -3,38 +3,44 @@ const output = document.querySelector('#output');
 const firstName = document.querySelector('#firstName');
 const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
+
 let  Users = [];
 const listUsers = () => {
-    output.innerText = '' ;
+    output.innerHTML = '' ;
     Users.forEach(user => {
-        let outputhtml = `
-        <div class="user">
-          <div class="text">
-            <h3>${user.firstName} ${user.lastName}</h3>
-            <small>${user.email}</small>
-          </div>
-          <div class="buttons">
-            <button class="btn btn-primary">change</button>
-            <button class="btn btn-danger">delete</button>
-          </div>
-        </div>
-    `
-       output.innerHTML += outputhtml
-       })
-  }
+        output.innerHTML += `<div id="${user.id}" class="bg-white border rounded p-2 d-flex justify-content-between align-items-center mt-1">${user.firstName} ${user.lastName} <br> ${user.email}  <button class="btn-danger px-3">X</button></div>` 
+      });
+}
    
 //  valedate text input (firstName,lastName);
 const checkInputsText = id => {
     const input = document.querySelector('#'+id);
     const error = document.querySelector('#'+id+'-error');
+     let x = 'false';
+         Users.forEach(user => {
+             if (user.firstName =input.value ) {
+                 x = 'true';
+              } else {
+                  x = 'false';
+        }
+          });
+          if (x === 'true' ){
+          console.log(input.value +" " +" user's name is not unique")
+        }
+            
+
       
     if(input.value === '' || input.value.length < 2) {
         error.innerText = 'Name cannot be blank or at least 2 characters'
      return false;
     } else {
+        
         error.innerText = '';
         return true;
       }
+     
+
+      
 }
   
     const checkEmail = id => {
@@ -51,6 +57,7 @@ const checkInputsText = id => {
           return false;
         }
       }
+  
     //   att skapa användare
     const registerUser = (firstName, lastName, email) => {
         let user = {
@@ -59,40 +66,31 @@ const checkInputsText = id => {
           lastName,
           email
         }
-        Users.push(user);
-        console.log('User register' +"  " +user.firstName +" "+ user.lastName);
-        console.log(Users);
-    }
-      listUsers ();
-      const validate = () => {
+    
+             Users.push(user);
+            console.log('User register' +"  " +user.firstName +" "+ user.lastName);
+            console.log(Users)
+    
 
-        document.querySelectorAll('input').forEach(input => {
-        
-          if(input.type === "text") {
-            checkInputsText(input.id);
-            // console.log(checkInputsText(input, error))
-          }
-        
-          if(input.type === "email") {
-            checkEmail(input.id);
-          }
-          
-        })
-      }
-      
-      
+        listUsers ();  
+       
+     
+    }
+  
         //   when you click button och register
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-         validate()
-        if(checkInputsText ('firstName') && checkInputsText ('lastName') && checkEmail('email')) {
-          
+         if(checkInputsText ('firstName') && checkInputsText ('lastName') && checkEmail('email') ) {
             registerUser(firstName.value, lastName.value, email.value);
           listUsers ();
-          console.log('ghghghgjh');
          firstName.innerText = '';
       
         }
     });
-
-    
+    // delete User
+    output.addEventListener('click', (e) => {
+        alert('Are you shur delet this user?');
+        Users = Users.filter(user=> user.id !== e.target.parentNode.id)
+        listUsers ();
+      })
+      
