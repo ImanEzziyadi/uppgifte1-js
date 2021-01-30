@@ -1,81 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
- <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-  <div class="container">
-      <div class="header">
-          <h2>Create Account</h2>
-      </div>
-      <form class="form" id="form">
-         <div class="row">
-           <div class="form-control font col-md-6 ">
-              <lable>Firstname</lable><br>
-              <input type="text" id="firstName" >
-              <i class="fa fa-check-circle"></i>
-              <i class="fas fa-exclamation-circle"></i>
-              <small>Error message</small>
-           </div>
-      
-            <div class="form-control font col-md-6 mt-md-0">
-                 <lable>last Name</lable><br>
-                 <input type="text" id="lastName" > 
-                 <i class="fa fa-check-circle"></i>
-                  <i class="fa fa-exclamation-circle"></i>
-                  <small>Error message</small>
-            </div>
-                     
-            <div class="form-control font">
-                    <lable>Email</lable><br>
-                    <input type="text" id="email" placeholder="Enter you Email"> 
-                  <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-            </div>
-            <div class="form-control font">
-                <button id="addTodo" class="btn-reg btn-info text-white col-2">Register</button>
-              </div>
-        </div>
-             
-      </form>
-        <!-- <button id="updatBtn" class="btn btn-info text-white">Update</button> -->
-        <h6>Lista</h6>
-         <div class="users  d-flex"> 
-             <div class="py-1" id="todos" >
-               <div class=" bg-white border rounded p-1 d-flex justify-content-between align-items-center mt-1">text <button class="btn-danger px-1" onclick="document.getElementById('id01').style.display='block'">X</button>
-             
-                  <button id="btn">change</button> 
-              </div>
-          </div>
-        
-
-        <div id="id01" class="modal">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-          <form class="modal-content" action="/action_page.php">
-            <div class="container-model">
-              <h1>Delete User</h1>
-              <p>Are you sure you want to delete user?</p>
-            
-              <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="button"  class="deletebtn">Delete</button>
-              </div>
-            </div>
-          </form>
-        </form>
-        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://kit.fontawesome.com/043e51ac62.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
      
-        
-      
+    <title> todo</title>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Create Account</h2>
     </div>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-  <script type="module" src="script.js"></script>
+    <div class="container">
+        
+        <form id="form" class="mt-4">
+          <div class="row">
+             <div class="col-3">
+                 <input type="text" id="firstName" class="form-control" placeholder="First Name"  aria-label="First Name example" First Name>
+                 <small class="text-danger" id="firstName-error"></small>
+             </div>
+             <div class="col-3">
+                 <input type="text" id="lastName" class="form-control" placeholder="Last Name"aria-label="Last Name example"Last Name>
+                <small class="text-danger" id="lastName-error"></small>
+             </div>
+             <div class="col-4">
+                 <input type="email" id="email" class="form-control" placeholder="Email" aria-label="Email example"Email >
+                 <small class="text-danger" id="email-error"></small>
+             </div>
+             <div class="col-2">
+                 <button class="btn btn-primary w-100">Add</button>
+             </div>
+          </div>
+        </form>
+    </div>
+          <div class=" container ">  
+             <div class="py-3  " id="output" > 
+               <div class="  bg-white border rounded p-1 d-flex justify-content-between align-items-center mt-1">text <button class="btn-danger px-1">X</button> </div>
+             </div>  
+             </div> 
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
